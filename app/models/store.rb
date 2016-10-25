@@ -1,3 +1,3 @@
 class Store < ApplicationRecord
-	has_one: comment
+	has_one :comment
 end

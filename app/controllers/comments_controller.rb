@@ -16,12 +16,15 @@ class CommentsController < ApplicationController
 	def edit
 		@comment = Comment.find(params[:id])
       	render json: @comment
-		
 	end
 
 	def create
-
-		
-	end
+		@comment = Comment.new(comment_params)
+	    if @comment.save
+	      render json: @comment
+	    else
+	      render json: @comment
+	    end
+	 end
 
 end
