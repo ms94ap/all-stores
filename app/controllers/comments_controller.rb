@@ -24,7 +24,13 @@ class CommentsController < ApplicationController
 	      render json: @comment
 	    else
 	      render json: @comment
-	    end
-	 end
+		end
+	end
+
+	private
+
+	 def comment_params
+		params.require(:comment).permit(:content)
+	end
 
 end

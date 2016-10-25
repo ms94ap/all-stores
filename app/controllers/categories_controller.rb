@@ -3,14 +3,17 @@ class CategoriesController < ApplicationController
 	end
 
 	def new
-		@comment = Comment.new
-   		render json: @comment
+		@category = Dategory.new
+   		render json: @category
 	end
-	
+
 	def create
-		@categories = Category.find_or_create_by(category_params)
-		render json: @categories
-	
+		@category = Category.find_or_create_by(category_params)
+		if @category.save
+	      render json: @category
+	    else
+	      render json: @category
+		end	
 	end
 
 	private
