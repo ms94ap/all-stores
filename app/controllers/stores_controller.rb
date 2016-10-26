@@ -2,36 +2,37 @@ class StoresController < ApplicationController
 
 
 	def index
-   		@stores = Product.all
+   		@stores = Store.all
    		render json: @stores
  	end
 
 	def show
-		@store = Store.find(params[:id])
+		@store = Store.find_by(params[:id])
 		render json: @store
 	end
 
 	def create
-		@store = Store.find_or_create_by(store_params)
-		render json: @store
+		@store = Store.new(store_params)
+		if @store.save
+			render json: @store
+		else
+			render json: {errors: @store.errors.full_messages, status: :uprocessable_entity}
+		end
 	end
 
-	def edit
-		@store = Store.find(params[:id])
-    	render json: @store
-		
+	def update
+		@store = Store.find_by(params[:id])
+		if @store.update(store_params)
+    		render json: @store
+    	else
+    		render json: {errors: @store.errors.full_messages, status: :uprocessable_entity}
+    	end
 	end
 
-
-	def new
-		@store = Store.new
-   		render json: @store
-	end
 
 	def delete
-		@store = Store.find(params[:id])
+		@store = Store.find_by(params[:id])
    		@store.destroy
-		render json: @store
 	end
 
 	private

@@ -3,11 +3,11 @@
 
 	angular
 		.module('app')
-		.config(function($stateProvider, $urlRouteProvider){
+		.config(function($stateProvider, $urlRouterProvider){
 			$stateProvider
 				.state('home', {
-					url:'/'
-					tempateUrl:'home/home.html',
+					url:'/',
+					templateUrl:'home/home.html',
 					controller: 'HomeController as vm'
 				})
 
@@ -15,8 +15,8 @@
 					url:'/stores',
 					templateUrl:'stores/stores.html',
 					controller: 'StoreController as vm'
-				})
+				});
 
-			$urlRouteProvider.otherwise('/');
-		})
-}()),
+			$urlRouterProvider.otherwise('/');
+		});
+}());
