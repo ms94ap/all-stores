@@ -1,7 +1,7 @@
 (function() {
 	'use strict'
 
-	function StoreController() {
+	function StoreController(StoreFactory) {
 		var vm = this;
 
 		vm.name = 'andrew'
@@ -21,7 +21,8 @@
 		}
 
 		function getStores(){
-			
+			return StoreFactory.getStores()
+			.then(setStores)
 		}
 
 		function getStore(){
@@ -38,6 +39,10 @@
 
 		function deleteStore(){
 
+		}
+
+		function setStores(data){
+			vm.stores = data;
 		}
 
 	};

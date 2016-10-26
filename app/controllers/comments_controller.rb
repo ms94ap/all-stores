@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
 	end
 
 	def edit
-		@comment = Comment.find(params[:id])
+		@comment = Comment.find_by(params[:id])
       	render json: @comment
 	end
 

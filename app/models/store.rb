@@ -1,4 +1,4 @@
 class Store < ApplicationRecord
-	has_one :comment
-	belongs_to :category
+	# has_one :comment, optional: true
+	belongs_to :category, optional: true
 end
