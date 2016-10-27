@@ -4,7 +4,7 @@
 	function HomeController() {
 		var vm = this;
 
-		vm.name = 'andrew'
+		// vm.name = 'andrew'
 
 		//callable methods
 	

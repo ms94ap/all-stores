@@ -3,10 +3,12 @@
 
 	function StoreController(StoreFactory) {
 		var vm = this;
+		vm.search = ''
 
-		vm.name = 'andrew'
+		
 
 		//callable methods
+		vm.getStores = getStores;
 		vm.getStore = getStore;
 		vm.createStore = createStore;
 		vm.updateStore = updateStore;
@@ -22,11 +24,11 @@
 
 		function getStores(){
 			return StoreFactory.getStores()
-			.then(setStores)
+				.then(setStores)
 		}
 
 		function getStore(){
-
+			return StoreFactory.getStore();
 		}
 
 		function createStore() {
@@ -36,15 +38,24 @@
 		}
 
 		function updateStore(){
+			return StoreFactory.updateStore()
+				.then(reset);
 
 		}
 
 		function deleteStore(){
-
+			return StoreFactory.deleteStore();
 		}
 
 		function setStores(data){
 			vm.stores = data;
+		}
+
+		vm.filteredStores = $filter('filter')(vm.stores, vm.search);
+		
+		vm.refilter = function(){
+	      vm.filteredStores = $filter('filter')(vm.stores, vm.search);
+		
 		}
 
 	};

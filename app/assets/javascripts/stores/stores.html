@@ -1,18 +1,16 @@
-testing html
+
 
 <button><a href="#" ui-sref="home.new-store" ui-sref-active="active">Add a New Store</a></button>
-	
+<button ng-click='vm.refilter()'>search</button>
+<!-- add filter here by location -->
 </div>
 
 <ul>
 	
 	<li ng-repeat='store in vm.stores track by store.id'>
 	Name:{{ store.name }} <br>
-	Address: {{store.address}}<br>
-	Location: {{store.location}}<br>
-	Email:{{store.email}}<br>
-	Phone:{{store.phone}}<br>
-	Country:{{ store.country }}
-
+	Location: {{store.location}}
+	<button><a href="#" ui-sref="home.store" ui-sref-active="active"> More Details</a></button>
 	</li>
+
 </ul>

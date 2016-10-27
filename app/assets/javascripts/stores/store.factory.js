@@ -16,7 +16,7 @@
 		}
 
 		function getStore(storeId) {
-			return $http.get('/store/' + storeId)
+			return $http.get('/stores/' + storeId)
 				.then(handleResponse)
         		.catch(handleError);
 		}
