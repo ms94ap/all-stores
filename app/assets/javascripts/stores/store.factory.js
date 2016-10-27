@@ -15,8 +15,10 @@
 				.catch(handleError);
 		}
 
-		function getStore() {
-			
+		function getStore(storeId) {
+			return $http.get('/store/' + storeId)
+				.then(handleResponse)
+        		.catch(handleError);
 		}
 
 		function createStore(store) {
@@ -37,13 +39,38 @@
 			
 		}
 
-		function updateStore() {
-			
-		}
+		function updateStore(store) {
+			var req = {
+       			method: 'PATCH',
+        		url: '/stores/' + store.id,
+        		headers: {
+          			'Content-Type': 'application/json'
+       			 },
+        		data: {
+          			store: store
+        		}
+      		}
 
-		function deleteStore() {
-			
-		}
+      		return $http(req)
+        		.then(handleResponse)
+        		.catch(handleError);
+    	}
+
+		function deleteStore(store) {
+			var req = {
+      			method: 'DELETE',
+      			url: '/stores/' + store.id,
+      			headers: {
+        			'Content-Type': 'application/json'
+      			},
+      			data: {
+       				store: store
+     		}
+    	};
+    		return $http(req)
+    			.then(handleResponse)
+    			.catch(handleError);
+  		}
 
 		function handleResponse(response){
 			console.log(response)

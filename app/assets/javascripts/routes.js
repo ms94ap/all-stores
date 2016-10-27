@@ -15,6 +15,12 @@
 					url:'/stores',
 					templateUrl:'stores/stores.html',
 					controller: 'StoreController as vm'
+				})
+
+				.state('home.new-store', {
+					url:'/new-store',
+					templateUrl:'stores/new.html',
+					controller: 'StoreController as vm'
 				});
 
 			$urlRouterProvider.otherwise('/');

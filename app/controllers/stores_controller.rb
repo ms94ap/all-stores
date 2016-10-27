@@ -12,7 +12,7 @@ class StoresController < ApplicationController
 	end
 
 	def create
-		@store = Store.new(store_params)
+		@store = Store.find_or_create_by(store_params)
 		if @store.save
 			render json: @store
 		else
