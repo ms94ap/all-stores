@@ -27,6 +27,11 @@
 					url:'/stores/:id',
 					templateUrl:'stores/store.html',
 					controller:'StoreController as vm'
+				})
+
+				.state('about', {
+					url:'/about',
+					templateUrl:'home/about.html'
 				});
 
 			$urlRouterProvider.otherwise('/');

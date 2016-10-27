@@ -1,7 +1,9 @@
 
 
 <button><a href="#" ui-sref="home.new-store" ui-sref-active="active">Add a New Store</a></button>
-<button ng-click='vm.refilter()'>search</button>
+  <div class='search-stores'>Search for stores
+  <input type="text" ng-model="vm.search", ng-change='vm.refilter()'>
+
 <!-- add filter here by location -->
 </div>
 
