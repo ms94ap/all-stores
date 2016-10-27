@@ -1,0 +1,23 @@
+<h1>Create new Store</h1>
+
+<form ng-submit="vm.createStore()">
+	<label for="name">Name: </label>
+	<input ng-model="vm.newStore.name" type="text" name="name"><br>
+
+	<label for="address">Address:</label>
+	<input ng-model="vm.newStore.address" type="text" name="address"><br>
+
+	<label for="location">Location:</label>
+	<input ng-model="vm.newStore.location" type="text" name="location"><br>
+
+	<label for="email">Email:</label>
+	<input ng-model="vm.newStore.email" type="text" name="email"><br>
+
+	<label for="phone">Phone:</label>
+	<input ng-model="vm.newStore.phone" type="text" name="phone"><br>
+
+	<label for="country">Country:</label>
+	<input ng-model="vm.newStore.country" type="text" name="country"><br>
+	
+	<input type="submit" value="Create new Store">
+</form>

@@ -19,7 +19,21 @@
 			
 		}
 
-		function createStore() {
+		function createStore(store) {
+			var req = {
+				method: 'POST',
+				url: '/stores',
+				headers: {
+					'Content-Type': "application/json"
+				},
+				data: {
+					store: store
+				}
+
+			};
+
+			return $http(req)
+				.catch(handleError)
 			
 		}
 

@@ -1,14 +1,18 @@
 testing html
 
+<div ng-include="'stores/new.html'">
+	
+</div>
+
 <ul>
 	
-	<li ng-repeat='store in vm.stores'>
-	Name:{{ store.name }}
-	<!-- Address: {{store.address}}
-	Location: {{store.location}}
-	Email:{{store.email}}
-	phone:{{phone.store}} -->
-
+	<li ng-repeat='store in vm.stores track by store.id'>
+	Name:{{ store.name }} <br>
+	Address: {{store.address}}<br>
+	Location: {{store.location}}<br>
+	Email:{{store.email}}<br>
+	Phone:{{store.phone}}<br>
+	Country:{{ store.country }}
 
 	</li>
 </ul>

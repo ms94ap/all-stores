@@ -30,6 +30,8 @@
 		}
 
 		function createStore() {
+			return StoreFactory.createStore(vm.newStore)
+				.then(getStores)
 
 		}
 
