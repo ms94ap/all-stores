@@ -1,7 +1,7 @@
 (function() {
 	'use strict'
 
-	function StoreController(StoreFactory) {
+	function StoreController(StoreFactory, $filter) {
 		var vm = this;
 		vm.search = ''
 
@@ -38,8 +38,8 @@
 		}
 
 		function updateStore(){
-			return StoreFactory.updateStore()
-				.then(reset);
+			return StoreFactory.updateStore();
+				
 
 		}
 

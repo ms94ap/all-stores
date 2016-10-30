@@ -42,7 +42,7 @@
 		function updateStore(store) {
 			var req = {
        			method: 'PATCH',
-        		url: '/stores/' + store.id,
+        		url: '/stores/' + store,
         		headers: {
           			'Content-Type': 'application/json'
        			 },
@@ -59,7 +59,7 @@
 		function deleteStore(store) {
 			var req = {
       			method: 'DELETE',
-      			url: '/stores/' + store.id,
+      			url: '/stores/' + store,
       			headers: {
         			'Content-Type': 'application/json'
       			},
