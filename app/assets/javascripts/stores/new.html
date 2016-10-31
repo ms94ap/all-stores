@@ -1,7 +1,7 @@
 <h1>Create new Store</h1>
 
-<form ng-submit="vm.createStore()">
-	<label for="name">Name: </label>
+<form name="form" ng-submit="vm.createStore()">
+	<label>Name: </label>
 	<input ng-model="vm.newStore.name" name="name" required="required">
 	<div ng-messages="form.name.$error" ng-if="form.name.$touched">
   		<div ng-message="required">Name is required!</div>

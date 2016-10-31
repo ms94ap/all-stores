@@ -12,14 +12,16 @@
 		vm.getStore = getStore;
 		vm.createStore = createStore;
 		vm.updateStore = updateStore;
+		//vm.storeDetails = storeDetails;
 		vm.deleteStore = deleteStore;
+		vm.refilter = refilter;
 
 		activate();
 
 
 		//defined methods
 		function activate(){
-			getStores()
+			getStores().then(() => refilter(vm.stores, vm.search));
 		}
 
 		function getStores(){
@@ -27,8 +29,8 @@
 				.then(setStores)
 		}
 
-		function getStore(){
-			return StoreFactory.getStore();
+		function getStore(id){
+			return StoreFactory.getStore(id);
 		}
 
 		function createStore() {
@@ -50,15 +52,16 @@
 		function setStores(data){
 			vm.stores = data;
 		}
-
-		vm.filteredStores = $filter('filter')(vm.stores, vm.search);
 		
-		vm.refilter = function(){
-	      vm.filteredStores = $filter('filter')(vm.stores, vm.search);
+		function refilter(stores, search){
+			
+	      vm.filteredStores = $filter('filter')(stores, search);
 		
 		}
 
 	};
+	//StoreController.$inject = ['StoreFactory', '$filter', 'storeDetails'];
+
 	angular
 		.module('app')
 		.controller('StoreController', StoreController)

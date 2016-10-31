@@ -14,7 +14,12 @@
 				.state('home.stores', {
 					url:'/stores',
 					templateUrl:'stores/stores.html',
-					controller: 'StoreController as vm'
+					controller: 'StoreController as vm',
+					resolve: {
+              			storeDetails: function($stateParams, StoreFactory) {
+               				return StoreFactory.getStore(1);
+             			}
+             		}
 				})
 
 				.state('home.new-store', {
@@ -23,10 +28,15 @@
 					controller: 'StoreController as vm'
 				})
 
-				.state('home.store', {
+				.state('home.store.details', {
 					url:'/stores/:id',
 					templateUrl:'stores/store.html',
-					controller:'StoreController as vm'
+					controller:'StoreController as vm'					
+					resolve: {
+              			storeDetails: function($stateParams, StoreFactory) {
+               				return StoreFactory.getStore($stateParams.id);
+             			}
+             		}
 				})
 
 				.state('about', {

@@ -1,21 +1,20 @@
 
 
   <div class='search-stores'>Search for stores
-  <input type="text" ng-model="vm.search", ng-change='vm.refilter()'>
+  <input type="text" ng-model="vm.search", ng-change='vm.refilter(vm.stores, vm.search)'>
 
 <!-- add filter here by location -->
 </div>
 
 <ul>
 	
-	<li ng-repeat='store in vm.stores track by store.id'>
+	<li ng-repeat='store in vm.filteredStores track by store.id'>
 	Name:{{ store.name }} <br>
 	Location: {{store.location}}
-	<button><a href="#" ui-sref="home.store" ui-sref-active="active"> More Details</a></button>
+	<button><a href="#" ui-sref="home.store.details({'id': store.id})" ui-sref-active="active"> More Details</a></button>
 	<button ng-click="vm.deleteStore(store.id)">Delete</button>
 	</li>
 	
 
 </ul>
 <button><a href="#" ui-sref="home.new-store" ui-sref-active="active">Add a New Store</a></button>
-	
