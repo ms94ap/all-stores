@@ -1,10 +1,11 @@
 (function() {
 	'use strict'
 
-	function StoreController(StoreFactory, $filter) {
+	function StoreController(StoreFactory, $filter, $stateParams) {	
+		console.log("anders", $stateParams)
 		var vm = this;
 		vm.search = ''
-
+		vm.editing = false;
 		
 
 		//callable methods
@@ -12,7 +13,7 @@
 		vm.getStore = getStore;
 		vm.createStore = createStore;
 		vm.updateStore = updateStore;
-		//vm.storeDetails = storeDetails;
+		// vm.storeDetails = storeDetails;
 		vm.deleteStore = deleteStore;
 		vm.refilter = refilter;
 
@@ -21,7 +22,20 @@
 
 		//defined methods
 		function activate(){
-			getStores().then(() => refilter(vm.stores, vm.search));
+			if ($stateParams.id) {
+				getStore($stateParams.id)
+					.then((data) => {
+						// console.log("datar", data)
+						return vm.store = data
+					})
+    	// get a single store
+  			} else {
+    			getStores().then(() => refilter(vm.stores, vm.search));
+	  		}
+		}
+
+		function toggleEditing(){
+			
 		}
 
 		function getStores(){
@@ -39,8 +53,8 @@
 
 		}
 
-		function updateStore(){
-			return StoreFactory.updateStore();
+		function updateStore(id){
+			return StoreFactory.updateStore(id);
 				
 
 		}

@@ -1,10 +1,21 @@
 <div>
-	Name:{{ vm.store.name }} <br>
-	Address: {{store.address}}<br>
-	Location: {{store.location}}<br>
-	Email:{{store.email}}<br>
-	Phone:{{store.phone}}<br>
-	Country:{{ store.country }}<br>
-	<button ng-click="vm.updateStore(store.id)">Edit</button>
+	<div ng-if="!vm.editing">
+		Name:{{ vm.store.name }} <br>
+		Address: {{vm.store.address}}<br>
+		Location: {{vm.store.location}}<br>
+		Email:{{vm.store.email}}<br>
+		Phone:{{vm.store.phone}}<br>
+		Country:{{ vm.store.country }}<br>
+	</div>
 	
+	<div ng-if="vm.editing">
+		Name:<input type="text" ng-model="vm.store.name"><br>
+		Address: <input type="text" ng-model="vm.store.address"><br>
+		Location:<input type="text" ng-model="vm.store.location"><br>
+		Email:<input type="text" ng-model="vm.store.email"><br>
+		Phone:<input type="digits" ng-model="vm.store.phone"><br>
+		Country:<input type="text" ng-model="vm.store.country"><br>
+	</div>
+	<button ng-click="vm.toggleEditing()">Edit</button>
+
 </div>
