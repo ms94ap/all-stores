@@ -6,6 +6,7 @@
 		Email:{{vm.store.email}}<br>
 		Phone:{{vm.store.phone}}<br>
 		Country:{{ vm.store.country }}<br>
+		<button ng-click="vm.setEditing(true)">Edit</button>
 	</div>
 	
 	<div ng-if="vm.editing">
@@ -15,7 +16,7 @@
 		Email:<input type="text" ng-model="vm.store.email"><br>
 		Phone:<input type="digits" ng-model="vm.store.phone"><br>
 		Country:<input type="text" ng-model="vm.store.country"><br>
+		<button ng-click="vm.updateStore(vm.store)">Save</button>
 	</div>
-	<button ng-click="vm.toggleEditing()">Edit</button>
 
 </div>

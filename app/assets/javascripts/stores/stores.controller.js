@@ -1,8 +1,8 @@
 (function() {
 	'use strict'
 
-	function StoreController(StoreFactory, $filter, $stateParams) {	
-		console.log("anders", $stateParams)
+	function StoreController(StoreFactory, $filter, $stateParams, $state) {	
+		// console.log("anders", $stateParams)
 		var vm = this;
 		vm.search = ''
 		vm.editing = false;
@@ -17,6 +17,9 @@
 		vm.deleteStore = deleteStore;
 		vm.refilter = refilter;
 
+
+		vm.setEditing = setEditing;
+
 		activate();
 
 
@@ -30,17 +33,18 @@
 					})
     	// get a single store
   			} else {
-    			getStores().then(() => refilter(vm.stores, vm.search));
+    			getStores();
 	  		}
 		}
 
-		function toggleEditing(){
-			
+		function setEditing(bool){
+			vm.editing = bool;
 		}
 
 		function getStores(){
 			return StoreFactory.getStores()
 				.then(setStores)
+				.then(() => refilter(vm.stores, vm.search));
 		}
 
 		function getStore(id){
@@ -50,17 +54,20 @@
 		function createStore() {
 			return StoreFactory.createStore(vm.newStore)
 				.then(getStores)
+				.then(() => $state.transitionTo('home.stores'))
 
 		}
 
-		function updateStore(id){
-			return StoreFactory.updateStore(id);
+		function updateStore(store){
+			return StoreFactory.updateStore(store)
+				.then(() => vm.editing = false);
 				
 
 		}
 
-		function deleteStore(){
-			return StoreFactory.deleteStore();
+		function deleteStore(storeId){
+			return StoreFactory.deleteStore(storeId)
+				.then(getStores);
 		}
 
 		function setStores(data){

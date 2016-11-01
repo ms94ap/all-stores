@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 gem 'responders'
-
+gem 'pry'
 gem 'bower-rails'
 gem 'angular-rails-templates'
 gem 'active_model_serializers', '~> 0.10.0'

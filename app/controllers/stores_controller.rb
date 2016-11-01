@@ -7,7 +7,7 @@ class StoresController < ApplicationController
  	end
 
 	def show
-		@store = Store.find_by(params[:id])
+		@store = Store.find(params[:id])
 		render json: @store
 	end
 
@@ -21,7 +21,7 @@ class StoresController < ApplicationController
 	end
 
 	def update
-		@store = Store.find_by(params[:id])
+		@store = Store.find(params[:id])
 		if @store.update(store_params)
     		render json: @store
     	else
@@ -30,8 +30,8 @@ class StoresController < ApplicationController
 	end
 
 
-	def delete
-		@store = Store.find_by(params[:id])
+	def destroy
+		@store = Store.find(params["id"])
    		@store.destroy
 	end
 

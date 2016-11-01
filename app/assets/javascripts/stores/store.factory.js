@@ -43,10 +43,10 @@
 		function updateStore(store) {
 			var req = {
        			method: 'PATCH',
-        		url: '/stores/' + store,
+        		url: '/stores/' + store.id,
         		headers: {
           			'Content-Type': 'application/json'
-       			 },
+       			},
         		data: {
           			store: store
         		}
@@ -57,17 +57,15 @@
         		.catch(handleError);
     	}
 
-		function deleteStore(store) {
+		function deleteStore(storeId) {
 			var req = {
       			method: 'DELETE',
-      			url: '/stores/' + store,
+      			url: '/stores/' + storeId,
       			headers: {
         			'Content-Type': 'application/json'
-      			},
-      			data: {
-       				store: store
+      			}
      		}
-    	};
+
     		return $http(req)
     			.then(handleResponse)
     			.catch(handleError);

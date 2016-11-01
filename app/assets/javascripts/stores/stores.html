@@ -11,8 +11,10 @@
 	<li ng-repeat='store in vm.filteredStores track by store.id'>
 	Name:{{ store.name }} <br>
 	Location: {{store.location}}
-<button><a href="#" ui-sref="home.store({'id': store.id})" ui-sref-active="active"> More Details</a></button>	<button ng-click="vm.deleteStore(store.id)">Delete</button>
+<button><a href="#" ui-sref="home.store({'id': store.id})" ui-sref-active="active"> More Details</a></button>	<button ng-click="vm.deleteStore(store.id)">Delete</button>{{store}}
 	</li>
+}
+}
 	
 
 </ul>
