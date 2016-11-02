@@ -1,5 +1,5 @@
 #About
-Welcome to All Stores. All Stores allows you to keep track of all the stores you visited(ie. restaurants, fashion stores etc.) This is a sinlge page app built with Angular and a Rails API.
+Welcome to Bedouin. Bedouin allows you to keep track of all the stores you visited(ie. restaurants, fashion stores, countries etc.) This is a sinlge page app built with Angular and a Rails API.
 
 #Dependencies
 
@@ -16,5 +16,6 @@ Then, run local server with `rails s` and navigate to localhost:3000 in your web
 Bug reports and pull requests are welcome on GitHub at https://github.com/ms94ap/all-stores. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 #License
+Copyright (c) 2016 Andrew Papacostas
 The app is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
