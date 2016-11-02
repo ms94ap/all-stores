@@ -1,24 +1,20 @@
-# README
+#About
+Welcome to All Stores. All Stores allows you to keep track of all the stores you visited(ie. restaurants, fashion stores etc.) This is a sinlge page app built with Angular and a Rails API.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#Dependencies
 
-Things you may want to cover:
+The Rails API was built using Rails 5.0.0.1, and a sqlite3 database. It requires the active_model_serializers gem for serialization.
 
-* Ruby version
+#Installation
+1) `bundle install`
+2) `rake db:migrate`
 
-* System dependencies
+Then, run local server with `rails s` and navigate to localhost:3000 in your web browser.
 
-* Configuration
+# Contributing
 
-* Database creation
+Bug reports and pull requests are welcome on GitHub at https://github.com/ms94ap/all-stores. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
-* Database initialization
+#License
+The app is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
