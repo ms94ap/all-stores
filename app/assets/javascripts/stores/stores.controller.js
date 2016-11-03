@@ -81,7 +81,6 @@
 		}
 
 	};
-	//StoreController.$inject = ['StoreFactory', '$filter', 'storeDetails'];
 
 	angular
 		.module('app')

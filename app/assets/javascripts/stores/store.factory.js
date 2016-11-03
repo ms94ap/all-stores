@@ -16,7 +16,7 @@
 		}
 
 		function getStore(storeId) {
-			console.log('terter', storeId)
+			// console.log('terter', storeId)
 			return $http.get('/stores/' + storeId)
 				.then(handleResponse)
         		.catch(handleError);
