@@ -1,5 +1,5 @@
 #About
-Welcome to Bedouin. Bedouin allows you to keep track of all the stores you visited(ie. restaurants, fashion stores, countries etc.) This is a sinlge page app built with Angular and a Rails API.
+Welcome to Bedouin. Bedouin allows you to keep track of all the places you visited(ie. restaurants, fashion stores, countries etc.) This is a sinlge page app built with Angular and a Rails API.
 
 #Dependencies
 

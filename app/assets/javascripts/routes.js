@@ -29,7 +29,7 @@
                     controller:'StoreController as vm'
                 })
 
-                .state('about', {
+                .state('home.about', {
                     url:'about',
                     templateUrl:'home/about.html'
                 });
