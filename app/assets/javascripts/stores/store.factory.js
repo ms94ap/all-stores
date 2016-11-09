@@ -8,7 +8,7 @@
 			updateStore: updateStore,
 			deleteStore: deleteStore
 		}
-
+ 
 		function getStores() {
 			return $http.get('/stores')
 				.then(handleResponse)
@@ -53,7 +53,7 @@
       		}
 
       		return $http(req)
-        		.then(handleResponse)
+        		.then((handleResponse))
         		.catch(handleError);
     	}
 
@@ -72,7 +72,7 @@
   		}
 
 		function handleResponse(response){
-			console.log(response)
+			// console.log(response)
 			return response.data
 
 		}

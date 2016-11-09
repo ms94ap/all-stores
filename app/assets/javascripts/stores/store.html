@@ -1,5 +1,6 @@
 <div>
-	<div ng-if="!vm.editing">
+	<div ng-if="!vm.editing"> 
+	<!-- if vm.editing is not true then show edit button -->
 		Name:{{ vm.store.name }} <br>
 		Address: {{vm.store.address}}<br>
 		Location: {{vm.store.location}}<br>
@@ -10,6 +11,7 @@
 	</div>
 	
 	<div ng-if="vm.editing">
+	<!-- if vm.editing is true then show save button and the inputs to edit the form. -->
 		Name:<input type="text" ng-model="vm.store.name"><br>
 		Address: <input type="text" ng-model="vm.store.address"><br>
 		Location:<input type="text" ng-model="vm.store.location"><br>

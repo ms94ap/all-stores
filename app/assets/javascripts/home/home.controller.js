@@ -2,20 +2,20 @@
 	'use strict'
 
 	function HomeController() {
-		var vm = this;
+		// var vm = this;
 
 		// vm.name = 'andrew'
 
 		//callable methods
 	
 
-		activate();
+		// activate();
 
 
-		//defined methods
-		function activate(){
+		// //defined methods
+		// function activate(){
 			
-		}
+		// }
 
 	};
 	angular

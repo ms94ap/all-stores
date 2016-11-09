@@ -6,6 +6,7 @@
 		var vm = this;
 		vm.search = ''
 		vm.editing = false;
+		vm.count = 0;
 		
 
 		//callable methods
@@ -16,6 +17,9 @@
 		// vm.storeDetails = storeDetails;
 		vm.deleteStore = deleteStore;
 		vm.refilter = refilter;
+
+		vm.counter = counter;
+		vm.remove = remove;
 
 
 		vm.setEditing = setEditing;
@@ -80,6 +84,43 @@
 		
 		}
 
+		function counter(storeId){
+			vm.stores.forEach((store, index) => {
+				if(store.id == storeId){
+					if (angular.isDefined(store.count)) {
+						if (store.count < 5) {
+							store.count += 1
+						} 
+					} else {
+
+						store.count = 1
+					}
+					
+					vm.stores[index] = store
+				}
+			})
+
+		}
+
+		function remove(storeId){
+			
+				vm.stores.forEach((store, index) => {
+				if(store.id == storeId){
+					if (angular.isDefined(store.count)) {
+						if (store.count > 0) {
+							store.count -= 1
+						} 
+					} else {
+
+						store.count = 1
+					}
+					
+					vm.stores[index] = store
+				}
+			})
+
+			
+		}
 	};
 
 	angular
