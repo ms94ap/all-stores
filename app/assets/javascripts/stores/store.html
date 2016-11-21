@@ -1,24 +1,14 @@
 <div>
-	<div ng-if="!vm.editing"> 
-	<!-- if vm.editing is not true then show edit button -->
-		Name:{{ vm.store.name }} <br>
-		Address: {{vm.store.address}}<br>
-		Location: {{vm.store.location}}<br>
-		Email:{{vm.store.email}}<br>
-		Phone:{{vm.store.phone}}<br>
-		Country:{{ vm.store.country }}<br>
-		<button ng-click="vm.setEditing(true)">Edit</button>
+	<div ng-repeat="key in vm.attributes">
+		<div ng-if="vm.editing[key]">
+			<input type="text" ng-model="vm.store[key]">
+			<button ng-click="vm.updateStore(vm.store, [key])">Save</button>
+		</div>
+		
+	<div ng-if="!vm.editing[key]">
+		{{key}} : {{vm.store[key]}}<br>
+		<button ng-click = "vm.setEditing(key, true)">Edit</button>
+	</div>
 	</div>
 	
-	<div ng-if="vm.editing">
-	<!-- if vm.editing is true then show save button and the inputs to edit the form. -->
-		Name:<input type="text" ng-model="vm.store.name"><br>
-		Address: <input type="text" ng-model="vm.store.address"><br>
-		Location:<input type="text" ng-model="vm.store.location"><br>
-		Email:<input type="text" ng-model="vm.store.email"><br>
-		Phone:<input type="digits" ng-model="vm.store.phone"><br>
-		Country:<input type="text" ng-model="vm.store.country"><br>
-		<button ng-click="vm.updateStore(vm.store)">Save</button>
-	</div>
-
 </div>

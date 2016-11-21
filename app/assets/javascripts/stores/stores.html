@@ -16,12 +16,28 @@
 	<div>
 		<button ng-click="vm.counter(store.id)">Plus one</button>
 		<button ng-click="vm.remove(store.id)">remove one</button>
-			<div>current count: {{store.count}}
-			</div>
+			<div>current count: {{store.rating}}</div>
+		
 	</div>
 
-	</li>	
+	<div>
+		<ul class="comments-list">
+			<li ng-repeat="comment in store.comments">
+				{{comment.created_at}}: {{comment.content}}
+				<button ng-click="vm.deleteComment(comment.id)">Delete</button>
+			</li>
+		</ul>
+
+		<button ng-if="!angular.isDefined(store.addingComment)" ng-click="store.addingComment = true">Add comment</button>
+
+	</div>	
+
+	<div class="new-comment" ng-if="store.addingComment">
+ 		<input ng-model="store.comment.content" type="textarea" placeholder="write your comment...." />
+		<button ng-click="vm.createComment(store)">Create comment</button>
+		
 	
+	</li>	
 
 </ul>
 <button><a href="#" ui-sref="home.new-store" ui-sref-active="active">Add a New Store</a></button>

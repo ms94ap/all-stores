@@ -1,12 +1,20 @@
 (function() {
 	'use strict'
 
-	function StoreController(StoreFactory, $filter, $stateParams, $state) {	
+	function StoreController(StoreFactory, CommentFactory, $filter, $stateParams, $state) {	
 		// console.log("anders", $stateParams)
 		var vm = this;
 		vm.search = ''
-		vm.editing = false;
-		vm.count = 0;
+		vm.editing = {
+			name: false,
+			address: false,
+			location: false,
+			email: false,
+			country: false,
+			phone: false
+		};
+	
+		vm.attributes = Object.keys(vm.editing)
 		
 
 		//callable methods
@@ -14,14 +22,22 @@
 		vm.getStore = getStore;
 		vm.createStore = createStore;
 		vm.updateStore = updateStore;
-		// vm.storeDetails = storeDetails;
 		vm.deleteStore = deleteStore;
 		vm.refilter = refilter;
+		vm.createComment = createComment;
+		vm.deleteComment = deleteComment;
+		
+
+		
+
 
 		vm.counter = counter;
 		vm.remove = remove;
+		
+		vm.currentComment = {};
+		
 
-
+		
 		vm.setEditing = setEditing;
 
 		activate();
@@ -41,8 +57,8 @@
 	  		}
 		}
 
-		function setEditing(bool){
-			vm.editing = bool;
+		function setEditing(key, bool){
+			vm.editing[key] = bool;
 		}
 
 		function getStores(){
@@ -62,10 +78,12 @@
 
 		}
 
-		function updateStore(store){
+		function updateStore(store, key){
 			return StoreFactory.updateStore(store)
-				.then(() => vm.editing = false);
-				
+				.then(() => { if (angular.isDefined(key)) {
+							vm.editing[key] = false;
+							}
+						})
 
 		}
 
@@ -87,17 +105,18 @@
 		function counter(storeId){
 			vm.stores.forEach((store, index) => {
 				if(store.id == storeId){
-					if (angular.isDefined(store.count)) {
-						if (store.count < 5) {
-							store.count += 1
+					if (angular.isDefined(store.rating)) {
+						if (store.rating < 5) {
+							store.rating += 1
 						} 
 					} else {
 
-						store.count = 1
+						store.rating = 1
 					}
-					
-					vm.stores[index] = store
+					vm.updateStore(store)
+						.then(() => vm.stores[index] = store)
 				}
+
 			})
 
 		}
@@ -106,21 +125,44 @@
 			
 				vm.stores.forEach((store, index) => {
 				if(store.id == storeId){
-					if (angular.isDefined(store.count)) {
-						if (store.count > 0) {
-							store.count -= 1
+					if (angular.isDefined(store.rating)) {
+						if (store.rating > 0) {
+							store.rating -= 1
 						} 
 					} else {
 
-						store.count = 1
+						store.rating = 1
 					}
 					
-					vm.stores[index] = store
+
+					
+					vm.updateStore(store)
+						.then(() => vm.stores[index] = store)
 				}
 			})
 
-			
 		}
+
+		function deleteComment(commentId) {
+			return CommentFactory.deleteComment(commentId)
+				.then(getStores);
+		}
+
+
+
+		function createComment(store) {
+			if (angular.isDefined(store.comment)) {
+				store.comment.store_id = store.id
+				CommentFactory.createComment(store.comment).then((data) => {
+					store.comments.push(data.data)
+					store.comment = undefined;
+					store.addingComment = false;
+
+				})
+
+			}	
+		}
+
 	};
 
 	angular
