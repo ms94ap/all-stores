@@ -2,11 +2,19 @@
 	<div ng-repeat="key in vm.attributes">
 		<div ng-if="vm.editing[key]">
 			<input type="text" ng-model="vm.store[key]">
-			<button ng-click="vm.updateStore(vm.store, [key])">Save</button>
+			<button ng-click="vm.updateStore(vm.store, key)">Save</button>
 		</div>
 		
 	<div ng-if="!vm.editing[key]">
-		{{key}} : {{vm.store[key]}}<br>
+
+		{{key}} :
+
+		<a ng-if="key == 'email'" href="mailto:{{vm.store[key]}}"> {{vm.store[key]}}</a>
+
+		<div ng-if="key != 'email'"> {{vm.store[key]}}</div>
+
+		<br>
+		
 		<button ng-click = "vm.setEditing(key, true)">Edit</button>
 	</div>
 	</div>
